@@ -9,6 +9,7 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const px2rem = require('postcss-px2rem');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 
@@ -157,7 +158,7 @@ module.exports = {
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
           {
-            test: /\.css$/,
+            test: /\.(css|scss|sass|less)$/,
             use: [
               require.resolve('style-loader'),
               {
@@ -183,9 +184,13 @@ module.exports = {
                       ],
                       flexbox: 'no-2009',
                     }),
+                    px2rem({remUnit:75})
                   ],
                 },
               },
+              {
+                loader: require.resolve('less-loader') // compiles Less to CSS
+              }
             ],
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.

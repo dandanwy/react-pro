@@ -1,0 +1,35 @@
+@navbar-height: 96px;
+
+.navbar {
+    height: @navbar-height;
+    background-color: #06c1ae;
+    .nav-wrap-left {
+        margin-right: 24px;
+        .place {
+            display: inline-block;
+            color: #fff;
+            height: @navbar-height;
+            line-height: @navbar-height;
+            span {
+                padding: 0 10px;
+            }
+        }
+    }
+    .box-search {
+        margin-top: 32px;
+    }
+    .nav-wrap-right {
+        height: @navbar-height;
+        padding-top: 20px;
+        color: #fff;
+        .my {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        .my-icon {
+            display: block;
+            text-align: center;
+        }
+    }
+}
